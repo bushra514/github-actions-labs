@@ -1,0 +1,19 @@
+name : My-First-worflow
+
+on:
+  push:
+  workflow_dispatch:
+
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+  steps:
+
+    # this step clones the repo into the runners workspace
+    - name: checkout repo code
+      uses: action/checkout@v4
+
+    - name: print the sample line
+      run : echo "Hello World!"
