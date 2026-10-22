@@ -6,13 +6,71 @@ on:
 
 
 jobs:
+  #checks ig app.py exists
+  code-check:
+    name: checks python code
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: checkout repo code
+        uses: actions/checkout@v4
+
+      - name: check python version
+        run: python --version
+
+      - name: check is app.py exists
+        run: test -f app.py
+
+  #run the tests for app.py
+  tests:
+    name: runs the test
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: checkout repo code
+        uses: actions/checkout@v4
+
+      - name: set up python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.12'
+
+      - name: install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
+          pip install pytest
+
+      - name: Run tests
+        run: pytest -v 
+
+
+# builds the code
   build:
     runs-on: ubuntu-latest
 
     steps:
       # this step clones the repo into the runners workspace
       - name: checkout repo code
-        uses: action/checkout@v4
+        uses: actions/checkout@v4
 
       - name: print the sample line
         run : echo "Hello World! this is the ci labs"
+
+      - name: set up python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.12'
+
+      #zip file m convert kro
+      - name: Build Package
+        runs: |
+          mkdir -p dist
+          tar -czf dist/application.tar.gz app.py
+
+      #ab jo zip file h use github-actions m save kro cz runner destroy ho jate h after jobs completions
+      - name: upload artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: python-application
+          path: dist/application.tar.gz
