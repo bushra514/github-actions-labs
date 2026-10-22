@@ -19,12 +19,13 @@ jobs:
         run: python --version
 
       - name: check is app.py exists
-        run: test -f app.py
+        run: test -f app/app.py
 
   #run the tests for app.py
   tests:
     name: runs the test
     runs-on: ubuntu-latest
+    needs: code-check
 
     steps:
       - name: checkout repo code
@@ -47,7 +48,9 @@ jobs:
 
 # builds the code
   build:
+    name: build application package
     runs-on: ubuntu-latest
+    needs: test
 
     steps:
       # this step clones the repo into the runners workspace
@@ -66,7 +69,7 @@ jobs:
       - name: Build Package
         run: |
           mkdir -p dist
-          tar -czf dist/application.tar.gz app.py
+          tar -czf dist/application.tar.gz app/app.py
 
       #ab jo zip file h use github-actions m save kro cz runner destroy ho jate h after jobs completions
       - name: upload artifact
