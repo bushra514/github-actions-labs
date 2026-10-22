@@ -53,7 +53,6 @@ jobs:
       # this step clones the repo into the runners workspace
       - name: checkout repo code
         uses: actions/checkout@v4
-        uses: actions/checkout@v4
 
       - name: print the sample line
         run : echo "Hello World! this is the ci labs"
@@ -65,7 +64,7 @@ jobs:
 
       #zip file m convert kro
       - name: Build Package
-        runs: |
+        run: |
           mkdir -p dist
           tar -czf dist/application.tar.gz app.py
 
