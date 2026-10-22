@@ -10,7 +10,6 @@ jobs:
     runs-on: ubuntu-latest
 
   steps:
-
     # this step clones the repo into the runners workspace
     - name: checkout repo code
       uses: action/checkout@v4
