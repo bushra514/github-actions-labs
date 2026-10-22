@@ -16,4 +16,4 @@ jobs:
       uses: action/checkout@v4
 
     - name: print the sample line
-      run : echo "Hello World!"
+      run : echo "Hello World! this is the ci labs"
