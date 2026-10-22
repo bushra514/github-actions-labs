@@ -1,27 +1,27 @@
-from flask import Flask
-import os
+# from flask import Flask
+# import os
 
-app = Flask(__name__)
-
-
-@app.route("/")
-def home():
-    return {
-        "message": "Hello from the Compose application!",
-        "environment": os.getenv("APP_ENV", "not-set")
-    }
+# app = Flask(__name__)
 
 
-@app.route("/health")
-def health():
-    return {
-        "status": "healthy"
-    }
+# @app.route("/")
+# def home():
+#     return {
+#         "message": "Hello from the Compose application!",
+#         "environment": os.getenv("APP_ENV", "not-set")
+#     }
+
+
+# @app.route("/health")
+# def health():
+#     return {
+#         "status": "healthy"
+#     }
 
 
 def add(a,b):
     return a + b
 
 
-if __name__ == "__main__":
-    app.run(host="0.0.0.0", port=8080)
+# if __name__ == "__main__":
+#     app.run(host="0.0.0.0", port=8080)
