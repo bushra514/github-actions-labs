@@ -18,6 +18,10 @@ jobs:
       - name: check python version
         run: python --version
 
+      - name: check git version
+        run: git --version
+  
+
       - name: check is app.py exists
         run: test -f app/app.py
 
