@@ -116,5 +116,5 @@ jobs:
       
       - name: Printing a env secret
         run : |
-          echo "Repo secret is: ${{secret.PASSWORD}}"
+          echo "Repo secret is: ${{secrets.PASSWORD}}"
          
