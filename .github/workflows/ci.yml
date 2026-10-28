@@ -107,15 +107,14 @@ jobs:
       - name: declaring steps level env var
         env:
           OS: Linux
-        run:
+        run: |
           echo "Step Level env is: $OS"
 
       - name: Print repository level env var
         run: |
           echo "repository var is ${{vars.DEPLOY_ENV}}"
-          ]
       
       - name: Printing a env secret
         run : 
-          echo "Repo secret is: ${{secret.PASSWORD }}"
+          echo "Repo secret is: ${{secret.PASSWORD}}"
          
