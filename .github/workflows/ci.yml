@@ -98,7 +98,7 @@ jobs:
     steps:
       - name: read environment variables from github
         run: |
-          echo "App Id is: ${{var.APP_ID}}" 
+          echo "App Id is: ${{vars.APP_ID}}" 
       
       - name: read env var from workflow
         run: |
@@ -112,7 +112,7 @@ jobs:
 
       - name: Print repository level env var
         run: |
-          echo "repository var is ${{DEPLOY_ENV}}"
+          echo "repository var is ${{vars.DEPLOY_ENV}}"
           ]
       
       - name: Printing a env secret
