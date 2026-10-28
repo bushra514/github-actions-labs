@@ -91,7 +91,7 @@ jobs:
 
   variables:
     runs-on: ubuntu-latest
-    environment: Development
+    environment: Devlopment
     env:
       Target: abcd
 
