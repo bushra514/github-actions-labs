@@ -89,4 +89,33 @@ jobs:
           echo "Runner: ${{runner.os}}"
 
 
+  variables:
+    runs-on: ubuntu-latest
+    environment: Development
+    env:
+      Target: abcd
+
+    steps:
+      - name: read environment variables from github
+        run: |
+          echo "App Id is: ${{var.APP_ID}}" 
+      
+      - name: read env var from workflow
+        run: |
+          echo "Workflow env var is: $Target"
+      
+      - name: declaring steps level env var
+        env:
+          OS: Linux
+        run:
+          echo "Step Level env is: $OS"
+
+      - name: Print repository level env var
+        run: |
+          echo "repository var is ${{DEPLOY_ENV}}"
+          ]
+      
+      - name: Printing a env secret
+        run : 
+          echo "Repo secret is: ${{secret.PASSWORD }}"
          
