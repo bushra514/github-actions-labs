@@ -75,5 +75,18 @@ jobs:
           name: python-application
           path: dist/application.tar.gz
 
+  worflow-info:
+    runs-on: ubuntu-latest
+    env:
+      APP_NAME: compose-app
+
+    steps: 
+      - name: variables printing
+        run: |
+          echo "Application: $APP_NAME"
+          echo "Repository: ${{github.repository}}"
+          echo "Actor: ${{github.actor}}"
+          echo "Runner: ${{runner.os}}"
+
 
          
