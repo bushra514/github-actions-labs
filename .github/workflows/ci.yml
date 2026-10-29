@@ -118,3 +118,15 @@ jobs:
         run : |
           echo "Repo secret is: ${{secrets.PASSWORD}}"
          
+
+  #Expressions-conditions:
+  branch-check-conditions:
+    if: github.ref == 'refs/head/main'
+    runs-on: ubuntu-latest
+
+    steps:
+      - name : after successs print msg
+        run : |
+          echo "Code was pushed on main branch"
+          echo "Branch is ${{github.ref}}"
+      #Yahan ${{ github.ref }} ko GitHub Actions workflow ke context se value milti hai.
