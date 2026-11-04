@@ -3,7 +3,9 @@ name : worflow-lab-1
 on:
   push:
     branches:
-      - features**
+      - features
+      - Pr-demo
+      
     paths:
       - 'app/**'
       - '!README.md'
