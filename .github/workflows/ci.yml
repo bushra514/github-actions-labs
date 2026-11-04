@@ -23,7 +23,7 @@ on:
         required: true
         type: choice
         options:
-          - Devlopment
+          - Development
           - staging
           - Production
           
@@ -140,7 +140,11 @@ jobs:
       - name: Printing a env secret
         run : |
           echo "Repo secret is: ${{secrets.PASSWORD}}"
-          echo "ENV secret is: ${{secrets.DEPLOYMENT_KEY}}"
+          if [ "{{secrets.DEPLOYMENT_KEY}}]; then
+            echo "Secret is available"
+          else
+            echo "secret is missing"
+          fi
          
 
   #Expressions-conditions:
