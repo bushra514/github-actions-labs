@@ -5,9 +5,10 @@ on:
     branches:
       - features
       - Pr-demo
-      
+
     paths:
       - 'app/**'
+      - '.github/workflows**'
       - '!README.md'
 
   pull_request:
