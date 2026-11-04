@@ -4,13 +4,17 @@ on:
   push:
     branches:
       - features
+      - Pr-demo
+      - main
+
     paths:
       - 'app/**'
+      - '.github/workflows**'
       - '!README.md'
 
-  # pull_request:
-  #   branches:
-  #     - main
+  pull_request:
+    branches:
+      - main
 
   workflow_dispatch:
 
@@ -133,3 +137,10 @@ jobs:
           echo "Code was pushed on main branch"
           echo "Branch is ${{github.ref}}"
       #Yahan ${{ github.ref }} ko GitHub Actions workflow ke context se value milti hai.
+
+  Pr-Demo:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: PR Trigger Demo
+        run: echo "Hello! Pull Request workflow triggered successfully."    
