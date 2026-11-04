@@ -16,7 +16,17 @@ on:
     branches:
       - main
 
-  # workflow_dispatch:
+  workflow_dispatch:
+    inputs:
+      environment:
+        description: Select deployment environment
+        required: true
+        type: choice
+        options:
+          - Devlopment
+          - staging
+          - Production
+          
 
 
 jobs:
@@ -144,3 +154,13 @@ jobs:
     steps:
       - name: PR Trigger Demo
         run: echo "Hello! Pull Request workflow triggered successfully."    
+
+  manual-deployment:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Display selected environment
+        run: |
+          echo "Deployment requested!"
+          echo "Selected environment: ${{ inputs.environment }}"
+    
