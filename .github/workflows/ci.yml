@@ -5,6 +5,7 @@ on:
     branches:
       - features
       - Pr-demo
+      - main
 
     paths:
       - 'app/**'
