@@ -135,5 +135,8 @@ jobs:
       #Yahan ${{ github.ref }} ko GitHub Actions workflow ke context se value milti hai.
 
   Pr-Demo:
-    - name: PR Trigger Demo
-      run: echo "Hello! Pull Request workflow triggered successfully."    
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: PR Trigger Demo
+        run: echo "Hello! Pull Request workflow triggered successfully."    
