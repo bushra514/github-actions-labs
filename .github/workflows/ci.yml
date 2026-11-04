@@ -139,13 +139,13 @@ jobs:
       
       - name: Printing a env secret
         env:
-          Dev: ${{secrets.DEPLOYMENT_KEY}}
-        run : |
-          echo "Repo secret is: ${{secrets.PASSWORD}}"
-          if [[ -n "$Dev"]]; then
+          DEPLOYMENT_KEY: ${{ secrets.DEPLOYMENT_KEY }}
+        shell: bash
+        run: |
+          if [[ -n "$DEPLOYMENT_KEY" ]]; then
             echo "Secret is available"
           else
-            echo "secret is missing"
+            echo "Secret is missing"
           fi
          
 
