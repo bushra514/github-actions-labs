@@ -138,9 +138,11 @@ jobs:
           echo "repository var is ${{vars.DEPLOY_ENV}}"
       
       - name: Printing a env secret
+        env:
+          Dev : ${{secrets.DEPLOYMENT_KEY}}
         run : |
-          echo "Repo secret is: ${{secrets.PASSWORD}}"
-          if [ "${{secrets.DEPLOYMENT_KEY}}"]; then
+          echo "Repo secret is: ${{secrets.PASSWORD}
+          if [ -n "$Dev"]; then
             echo "Secret is available"
           else
             echo "secret is missing"
