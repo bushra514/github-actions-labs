@@ -1,4 +1,4 @@
-name : worflow-lab-1
+name : workflow-lab-1
 
 on:
   push:
@@ -16,7 +16,7 @@ on:
     branches:
       - main
 
-  workflow_dispatch:
+  # workflow_dispatch:
 
 
 jobs:
