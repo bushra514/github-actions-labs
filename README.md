@@ -1,2 +1,8 @@
 # github-actions-labs
 github-actions-labs
+
+
+#just some random changes to check the CI pipeline.
+
+#to check if path filter is working or not with negative pattern !
+#again to check if working after comenting out the pull trigger.
