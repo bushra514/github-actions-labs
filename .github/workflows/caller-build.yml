@@ -1,0 +1,8 @@
+name: Caller worflow
+
+on:
+  workflow_dispatch:
+
+jobs:
+  call-reusable-build:
+    uses: ./github/workflows/reusable-build.yml
