@@ -1,0 +1,16 @@
+name: Reusable Build Workflow
+
+on:
+  workflow_call:
+
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Reusable workflow execution
+        run: echo "This workflow was triggered only after it was called by another workflow"
+
+      - name: building application
+        run: echo "building application..."
