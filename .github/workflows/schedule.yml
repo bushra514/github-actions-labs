@@ -1,0 +1,17 @@
+name: Scheduled workflow
+
+on:
+  schedule:
+    - cron: '*/5 * * *'
+
+  workflow_dispatch:
+
+
+jobs:
+  schedule_job:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Scheduled demo
+        run: |
+          echo "This Scheduled is executing perfectly on every 5 minutes!"
