@@ -23,7 +23,7 @@ on:
         required: true
         type: choice
         options:
-          - Devlopment
+          - Development
           - staging
           - Production
           
@@ -108,14 +108,20 @@ jobs:
 
   variables:
     runs-on: ubuntu-latest
-    environment: Devlopment
+    environment: ${{inputs.environment}}
     env:
       Target: abcd
 
     steps:
+      - name: Print selected environment
+        run: |
+          echo "Selected environment: ${{ inputs.environment }}"
+          echo "Azure App Service: ${{ vars.APP_NAME }}"
+
       - name: read environment variables from github
         run: |
           echo "App Id is: ${{vars.APP_ID}}" 
+          echo "App Id is: ${{vars.APP_NAME}}" 
       
       - name: read env var from workflow
         run: |
@@ -132,8 +138,15 @@ jobs:
           echo "repository var is ${{vars.DEPLOY_ENV}}"
       
       - name: Printing a env secret
-        run : |
-          echo "Repo secret is: ${{secrets.PASSWORD}}"
+        env:
+          DEPLOYMENT_KEY: ${{ secrets.DEPLOYMENT_KEY }}
+        shell: bash
+        run: |
+          if [[ -n "$DEPLOYMENT_KEY" ]]; then
+            echo "Secret is available"
+          else
+            echo "Secret is missing"
+          fi
          
 
   #Expressions-conditions:
