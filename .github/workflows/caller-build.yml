@@ -16,5 +16,5 @@ jobs:
     needs: call-reusable-build
 
     steps:
-     - run: echo "version is ${{needs.call-reusable-build.outputs.version}}"
+     - run: echo "version is ${{needs.call-reusable-build.outputs.app_version}}"
   
