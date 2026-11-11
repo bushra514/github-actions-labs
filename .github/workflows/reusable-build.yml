@@ -7,9 +7,9 @@ on:
         required: true
         type: string
 
-      secrets:
-        Azure_Client_Secret:
-        required: true
+    secrets:
+      Azure_Client_Secret:
+      required: true
 
 
 jobs:
