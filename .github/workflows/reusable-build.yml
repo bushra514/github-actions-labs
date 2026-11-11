@@ -11,6 +11,9 @@ on:
       Azure_Client_Secret:
         required: true
 
+    outputs:
+      app_version:
+        value: ${{jobs.test.outputs.version}}
 
 jobs:
   build:
