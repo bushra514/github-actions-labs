@@ -10,6 +10,12 @@ jobs:
       environment: staging
     secrets:
       Azure_Client_Secret: ${{secrets.Azure}}
-    run: |
-      echo "version: ${{needs.test.outputs.version}}"
+      
+  display-version:
+    runs-on: ubuntu-latest
+    needs: test
+
+    steps:
+      run: |
+        echo "version: ${{needs.test.outputs.version}}"
   
