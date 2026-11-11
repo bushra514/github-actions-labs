@@ -30,7 +30,7 @@ jobs:
         env:
           Client_secret: ${{secrets.Azure_Client_Secret}}
         run: |
-          if [-z "$Client_secret"]; then
+          if [ -z "$Client_secret" ]; then
             echo "secrets in missing"
             exit 1
           fi
