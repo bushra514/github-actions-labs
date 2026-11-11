@@ -49,4 +49,5 @@ jobs:
     steps:  
       - name: Print the Outputs
         id: versionid
+        #$GITHUB_OUTPUT is an environment file used in GitHub Actions to save data from a specific step and share it with subsequent steps or jobs.
         run: echo "app_version=1.0.0.0" >> "$GITHUB_OUTPUT" # declaring a variable with the version and saving it in $GITHUB_OUTPUT file

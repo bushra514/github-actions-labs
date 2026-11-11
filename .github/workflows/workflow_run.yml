@@ -1,0 +1,14 @@
+name: Workflow_run
+
+on:
+  workflow_run:
+    workflows: ["Caller workflow"]
+    types: [completed]
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+     - name: Deploying the application
+       run: echo "This workflow is triggered only after caller workflow was completed"
