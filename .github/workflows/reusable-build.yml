@@ -2,7 +2,18 @@ name: Reusable Build Workflow
 
 on:
   workflow_call:
+    inputs:
+      environment:
+        required: true
+        type: string
 
+    secrets:
+      Azure_Client_Secret:
+        required: true
+
+    outputs:
+      app_version:
+        value: ${{jobs.test.outputs.version}}
 
 jobs:
   build:
@@ -14,3 +25,29 @@ jobs:
 
       - name: building application
         run: echo "building application..."
+
+      - name: Printing inputs provided from caller file
+        run: echo "Deploying to ${{inputs.environment}}"
+
+      - name: Deploy to azure
+        env:
+          Client_secret: ${{secrets.Azure_Client_Secret}}
+        run: |
+          if [ -z "$Client_secret" ]; then
+            echo "secrets in missing"
+            exit 1
+          fi
+
+          echo "Azure deployment initiated"
+  
+  test:
+    runs-on: ubuntu-latest
+
+    outputs:
+      version: ${{steps.versionid.outputs.app_version}} # i want something from step. which step?. what do you want?
+
+    steps:  
+      - name: Print the Outputs
+        id: versionid
+        #$GITHUB_OUTPUT is an environment file used in GitHub Actions to save data from a specific step and share it with subsequent steps or jobs.
+        run: echo "app_version=1.0.0.0" >> "$GITHUB_OUTPUT" # declaring a variable with the version and saving it in $GITHUB_OUTPUT file

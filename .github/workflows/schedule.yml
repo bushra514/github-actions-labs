@@ -14,4 +14,4 @@ jobs:
     steps:
       - name: Scheduled demo
         run: |
-          echo "This Scheduled is executing perfectly on every 5 minutes!"
+          echo "This Scheduled is executing perfectly on every 5 minutes!"  
