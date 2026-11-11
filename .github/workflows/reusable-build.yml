@@ -9,7 +9,7 @@ on:
 
     secrets:
       Azure_Client_Secret:
-      required: true
+        required: true
 
 
 jobs:
