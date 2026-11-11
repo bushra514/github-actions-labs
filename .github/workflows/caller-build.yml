@@ -11,5 +11,5 @@ jobs:
     secrets:
       Azure_Client_Secret: ${{secrets.Azure}}
     run: |
-      echo "version: ${{needs.build.outputs.version}}"
+      echo "version: ${{needs.test.outputs.version}}"
   
