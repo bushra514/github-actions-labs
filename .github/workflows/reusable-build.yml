@@ -3,9 +3,13 @@ name: Reusable Build Workflow
 on:
   workflow_call:
     inputs:
-      environment:
+      environmentss:
         required: true
         type: string
+
+      secrets:
+        Azure_Client_Secret:
+        required: true
 
 
 jobs:
@@ -20,4 +24,9 @@ jobs:
         run: echo "building application..."
 
       - name: Printing inputs provided from caller file
-        run: echo "Deploying to ${{inputs.environment}}"
+        run: echo "Deploying to ${{inputs.environmentss}}"
+
+      - name: Deploy to azure
+        env:
+          Client_secret: ${{secrets.Azure_Client_Secret}}
+        run: echo "Azure deployment initiated"
