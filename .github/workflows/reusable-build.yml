@@ -36,3 +36,12 @@ jobs:
           fi
 
           echo "Azure deployment initiated"
+  
+
+    outputs:
+      version: ${{steps.versionid.outputs.app_version}} # i want something from step. which step?. what do you want?
+
+      steps:
+        - name: Print the Outputs
+          id: versionid
+          run: echo "app_version=1.0.0.0" >> "$GITHUB_OUTPUT" # declaring a variable with the version and saving it in $GITHUB_OUTPUT file

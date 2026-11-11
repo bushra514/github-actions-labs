@@ -10,4 +10,6 @@ jobs:
       environment: staging
     secrets:
       Azure_Client_Secret: ${{secrets.Azure}}
+    run: |
+      echo "version: ${{needs.build.outputs.version}}"
   
