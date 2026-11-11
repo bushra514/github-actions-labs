@@ -3,7 +3,7 @@ name: Reusable Build Workflow
 on:
   workflow_call:
     inputs:
-      environmentss:
+      environment:
         required: true
         type: string
 
@@ -24,7 +24,7 @@ jobs:
         run: echo "building application..."
 
       - name: Printing inputs provided from caller file
-        run: echo "Deploying to ${{inputs.environmentss}}"
+        run: echo "Deploying to ${{inputs.environment}}"
 
       - name: Deploy to azure
         env:

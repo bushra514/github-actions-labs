@@ -7,7 +7,7 @@ jobs:
   call-reusable-build:
     uses: ./.github/workflows/reusable-build.yml
     with:
-      environment: staging
+      environmentss: staging
     secrets:
       Azure_Client_Secret: ${{secrets.Azure}}
   
