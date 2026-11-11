@@ -9,5 +9,5 @@ jobs:
     with:
       environment: staging
     secrets:
-      Azure_Client_Secret: ${{secrets.Azure1}}
+      Azure_Client_Secret: ${{secrets.Azure}}
   
