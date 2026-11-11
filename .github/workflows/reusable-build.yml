@@ -29,4 +29,10 @@ jobs:
       - name: Deploy to azure
         env:
           Client_secret: ${{secrets.Azure_Client_Secret}}
-        run: echo "Azure deployment initiated"
+        run: |
+          if [-z "$Client_secret"]; then
+            echo "secrets in missing"
+            exit 1
+          fi
+
+          echo "Azure deployment initiated"
