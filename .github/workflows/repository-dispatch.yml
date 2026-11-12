@@ -1,0 +1,15 @@
+name: repository dispatch external Trigger
+
+# this workflow will be triggered by an external event
+
+on:
+  repository_dispatch:
+    types: [external_event]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+  steps:
+    - name: External deployment
+      run: echo "This workflow is triggered by an external event"
