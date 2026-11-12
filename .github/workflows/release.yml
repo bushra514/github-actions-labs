@@ -13,4 +13,4 @@ jobs:
         run: echo "A new release has been published!"
 
       - name: Show release tag
-        run: echo "Release version is ${{igthub.event.release.tag_name}}
+        run: echo "Release version is ${{github.event.release.tag_name}}
