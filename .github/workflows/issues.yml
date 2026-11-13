@@ -13,6 +13,9 @@ jobs:
       issues: write
 
     steps:
+      - name: checkout the repository
+        uses: actions/checkout@v4
+
       - name: Add a bug label
         run: gh issue edit ${{github.event.issue.number}} --add-label bug
         env:
