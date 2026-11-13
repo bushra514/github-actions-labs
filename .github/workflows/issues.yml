@@ -6,13 +6,14 @@ on:
 
 
 jobs:
-  runs-on: ubuntu-latest
+  issues:
+    runs-on: ubuntu-latest
 
-  permissions:
-    issues: write
+    permissions:
+      issues: write
 
-  steps:
-    - name: Add a bug label
-      run: gh issue edit ${{github.event.issue.number}} --add-label bug
-      env:
-        GH_TOKEN: ${{github.token}} 
+    steps:
+      - name: Add a bug label
+        run: gh issue edit ${{github.event.issue.number}} --add-label bug
+        env:
+          GH_TOKEN: ${{github.token}} 
