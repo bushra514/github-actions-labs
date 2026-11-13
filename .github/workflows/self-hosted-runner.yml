@@ -1,0 +1,24 @@
+name: self-hosted runner
+
+on:
+  workflow_dispatch:
+
+
+jobs:
+  self-runner:
+    runs-on: [self-hosted, linux, x64]
+
+    steps:
+      - name: Print a message
+        run: echo "This job is running on a self hosted runner"
+
+      - name: Display hostname
+        run: hostname
+      
+      - name: Display Present working directory
+        run: pwd
+
+      - name: display user
+        run: whoami
+
+      
