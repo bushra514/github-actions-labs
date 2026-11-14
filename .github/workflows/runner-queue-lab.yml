@@ -1,0 +1,23 @@
+name: Runner Queue Lab
+
+on:
+  workflow_dispatch:
+  
+
+jobs:
+  build:
+    runs-on: [self-hosted, linux]
+
+    steps:
+      - name: Build the package
+        run: echo "Build the package on self-hosted runner"
+
+  test:
+    needs: build
+    runs-on: [self-hosted, linux]
+
+    steps:
+      - name: Testing the code
+        run: echo "Code testing completed"
+
+
