@@ -7,8 +7,6 @@ on:
 jobs:
   build:
     runs-on: [self-hosted, linux]
-    with:
-      environment: staging
 
     steps:
       - name: Build the package

@@ -4,10 +4,7 @@ on:
   workflow_run:
     workflows: ["Runner Queue Lab"]
     types: [completed]
-    inputs:
-      environment:
-      required: true
-      type: string
+    
 
 jobs:
   deploy:
@@ -17,4 +14,4 @@ jobs:
      - name: Deploying the application
        run: | 
         echo "This workflow is triggered only after runner workflow was completed"
-        echo "Deploying to ${{inputs.environment}}"
+        
