@@ -10,7 +10,7 @@ jobs:
     steps:
       - name: Checkout the repo in the runner to build an artifact
         uses: actions/checkout@v4
-        run: echo "Checkout completed"
+        # run: echo "Checkout completed"  #can't write run along with uses as uses executes an existing action  
 
       - name: build an artifact
         run:  |
