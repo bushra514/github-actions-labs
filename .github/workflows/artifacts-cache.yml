@@ -1,0 +1,24 @@
+name: artifacts and cache
+
+on:
+  workflow_dispatch:
+
+jobs:
+  artifacts:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout the repo in the runner to build an artifact
+        uses: actions/checkout@v4
+        # run: echo "Checkout completed"  #can't write run along with uses as uses executes an existing action  
+
+      - name: build an artifact
+        run:  |
+          mkdir -p dist/
+          tar -czvf dist/app.tar.gz app/app.py
+
+      - name: Upload an artifact on github
+        uses: actions/upload-artifact@v7
+        with:
+          name: python-app
+          path: dist/app.tar.gz
