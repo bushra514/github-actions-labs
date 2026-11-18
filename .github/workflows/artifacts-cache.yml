@@ -40,7 +40,7 @@ jobs:
       - name: check if the cache exists in github cache storage
         uses: actions/cache@v4
         with:
-          path: ~/.cache.pip
+          path: ~/.cache/pip
           key: ${{runner.os}}-pip-${{hashfiles('app/requirements.txt')}}
 
       - name: Install dependencies
