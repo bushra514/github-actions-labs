@@ -22,3 +22,34 @@ jobs:
         with:
           name: python-app
           path: dist/app.tar.gz
+
+############cache
+
+  cache:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: checkout the code 
+        uses: actions/checkout@v7
+
+      - name: setup python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.12'
+      
+      - name: check if the cache exists in github cache storage
+        uses: actions/cache@v4
+        with:
+          path: ~/.cache/pip
+          key: ${{runner.os}}-pip-${{hashfiles('app/requirements.txt')}}
+
+      - name: Install dependencies
+        run: pip install -r app/requirements.txt
+
+      - name: Run test  
+        run: |
+           pytest
+           echo "Pytest successfull"
+           echo "Just an extra line for cache demo"
+            
+
