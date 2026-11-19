@@ -28,19 +28,20 @@ jobs:
       - name: verify azure login  
         run: az account show
 
-      - name: Create a resource group in azure using cli
-        run: |
-          az group create \
-          --name rg-demo-labs \
-          --location centralindia
+      # - name: Create a resource group in azure using cli
+      #   run: |
+      #     az group create \
+      #     --name rg-demo-labs \
+      #     --location centralindia
 
       - name: Verfiy the R-group
         run: |
           if [ "$(az group exists --name rg-demo-labs)" = "true" ]; then
             echo "group exists"
           else
-            echo "No group found"
-            exit 1
+            az group create \
+            --name rg-demo-labs \
+            --location centralindia
           fi
 
 
