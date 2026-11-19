@@ -1,5 +1,9 @@
 name: Azure OIDC Login Test
 on:
+  push:
+    branches:
+      - main
+
   workflow_dispatch:
 
 permissions:
@@ -29,6 +33,16 @@ jobs:
           az group create \
           --name rg-demo-labs \
           --location centralindia
+
+      - name: Verfiy the R-group
+        run: |
+          if [ "$(az group exists --name rg-demo-labs)" = "true" ]; then
+            echo "group exists"
+          else
+            echo "No group found"
+            exit 1
+          fi
+
 
         
 
