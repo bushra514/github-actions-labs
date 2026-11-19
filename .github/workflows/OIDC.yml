@@ -1,10 +1,10 @@
-name: Azure Login Test
+name: Azure OIDC Login Test
 on:
   workflow_dispatch:
 
 permissions:
-  content: read # Iska purpose hai GitHub repository ka code read karne ki permission dena. to checkout in runner
-  id-content: write # iske bina workfloe github se OIDC token request nhi kr skta h 
+  contents: read # Iska purpose hai GitHub repository ka code read karne ki permission dena. to checkout in runner
+  id-token: write # iske bina workfloe github se OIDC token request nhi kr skta h 
 
 jobs:
   azure-login:
