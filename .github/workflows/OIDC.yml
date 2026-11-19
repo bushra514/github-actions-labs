@@ -24,10 +24,6 @@ jobs:
       - name: verify azure login  
         run: az account show
 
-  rg-group-creation:
-    runs-on: ubuntu-latest
-
-    steps:
       - name: Create a resource group in azure using cli
         run: |
           az group create \
