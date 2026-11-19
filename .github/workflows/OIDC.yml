@@ -1,0 +1,25 @@
+name: Azure Login Test
+on:
+  workflow_dispatch:
+
+permissions:
+  content: read # Iska purpose hai GitHub repository ka code read karne ki permission dena. to checkout in runner
+  id-content: write # iske bina workfloe github se OIDC token request nhi kr skta h 
+
+jobs:
+  azure-login:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: checkout the code
+        uses: actions/checkout@v4
+
+      - name: azure login using OIDC
+        uses: azure/login@v2
+        with:
+          client-id: ${{vars.AZURE_CLIENT_ID}}
+          tenant-id: ${{vars.AZURE_TENANT_ID}}
+          subscription-id: ${{vars.AZURE_SUBSCRIPTION_ID}}
+
+      - name: verify azure login  
+        run: az account show
