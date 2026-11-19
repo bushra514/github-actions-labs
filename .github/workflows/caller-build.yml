@@ -4,17 +4,24 @@ on:
   workflow_dispatch:
 
 jobs:
-  call-reusable-build:
-    uses: ./.github/workflows/reusable-build.yml
-    with:
-      environment: staging
-    secrets:
-      Azure_Client_Secret: ${{secrets.Azure}}
+  # call-reusable-build:
+  #   uses: ./.github/workflows/reusable-build.yml
+  #   with:
+  #     environment: staging
+  #   secrets:
+  #     Azure_Client_Secret: ${{secrets.Azure}}
       
-  display-version:
-    runs-on: ubuntu-latest
-    needs: call-reusable-build
+  # display-version:
+  #   runs-on: ubuntu-latest
+  #   needs: call-reusable-build
 
-    steps:
-     - run: echo "version is ${{needs.call-reusable-build.outputs.app_version}}"
+  #   steps:
+  #    - run: echo "version is ${{needs.call-reusable-build.outputs.app_version}}"
   
+
+#calling a workflow from a diff repository
+  reusable-repo:
+    uses: bushra514/reusable-workflows-repo/.github/workflows/main.yml@main
+    with: 
+      app_name: "Demo app"
+      
